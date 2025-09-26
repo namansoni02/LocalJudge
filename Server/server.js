@@ -1,25 +1,30 @@
-// server.js
-const net = require("net");
+// Server/server.js
+const express = require("express");
+const http = require("http");
+const { Server } = require("socket.io");
 
-const HOST = "0.0.0.0"; // Bind to all network interfaces
-const PORT = 5000;
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: { origin: "*" } // Allow all clients
+});
 
-const server = net.createServer((socket) => {
-  console.log("Client connected:", socket.remoteAddress);
+io.on("connection", (socket) => {
+  console.log("Client connected:", socket.id);
 
-  // Send a message to client
-  socket.write("Hello from server (Hotspot laptop)!\n");
+  // Send welcome message
+  socket.emit("message", "Hello from hotspot laptop!");
 
-  // Receive data from client
-  socket.on("data", (data) => {
-    console.log("Received from client:", data.toString());
+  // Listen for client messages
+  socket.on("message", (msg) => {
+    console.log("Client says:", msg);
   });
 
-  socket.on("close", () => {
-    console.log("Client disconnected");
+  socket.on("disconnect", () => {
+    console.log("Client disconnected:", socket.id);
   });
 });
 
-server.listen(PORT, HOST, () => {
-  console.log(`Server running on ${HOST}:${PORT}`);
+server.listen(5000, "0.0.0.0", () => {
+  console.log("Server running on port 5000");
 });

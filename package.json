@@ -1,7 +1,7 @@
 {
   "name": "localjudge",
   "version": "1.0.0",
-  "description": "LocalJudge - simple TCP messaging system using Node.js",
+  "description": "LocalJudge - simple TCP/HTTP messaging system using Node.js, Express, and Socket.IO",
   "main": "index.js",
   "scripts": {
     "start-server": "node Server/server.js",
@@ -13,8 +13,15 @@
     "tcp",
     "networking",
     "socket",
+    "express",
+    "socket.io",
     "localjudge"
   ],
   "author": "Your Name",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.0",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5"
+  }
 }
