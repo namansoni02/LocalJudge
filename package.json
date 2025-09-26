@@ -1,12 +1,20 @@
 {
   "name": "localjudge",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000L\u0000o\u0000c\u0000a\u0000l\u0000J\u0000u\u0000d\u0000g\u0000e\u0000\r\u0000 \u0000",
+  "description": "LocalJudge - simple TCP messaging system using Node.js",
   "main": "index.js",
   "scripts": {
+    "start-server": "node Server/server.js",
+    "start-client": "node Client/client.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "tcp",
+    "networking",
+    "socket",
+    "localjudge"
+  ],
+  "author": "Your Name",
   "license": "ISC"
 }
